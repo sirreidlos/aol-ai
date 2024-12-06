@@ -78,6 +78,19 @@ def prompt():
     print(f"{user_id} Symptoms: {response.text}")
     return response.text
 
+@app.route("/api/history", methods=["GET"])
+def get_history():
+    user_id = request.cookies.get("user_id")
+    if not user_id:
+        return "Missing cookies", 400
+
+    if not chats.get(user_id):
+        return "Chat not found", 404
+
+    chat_history = [(s.parts[0].text, s.role) for s in chats[user_id].history]
+    print(chat_history)
+    return chat_history
+    
 
 @app.route("/<path:path>")
 def static_file(path):
