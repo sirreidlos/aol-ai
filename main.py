@@ -9,8 +9,6 @@ genai.configure(api_key=os.environ["GEMINI_API_KEY"])
 chats = {}
 
 app = Flask(__name__)
-
-
 # Create the model
 generation_config = {
     "temperature": 1,

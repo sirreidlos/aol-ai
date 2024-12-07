@@ -1,15 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="script.js"></script>
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <script src="script/script.js" defer></script>
+    <title>HealthGPT</title>
 </head>
+<body class="page">
+    <div class="navbar">
+        <h1>HealthGPT</h1>
+    </div>
 
-<body>
-  <textarea name="prompt" id="prompt"></textarea>  
+    <div class="flexbox">
+        <div class="sidebar">
+            <div class="newRoom">
+                <button class="newRoomButton" id="newRoomButton">New Diagnosis</button>
+            </div>
+            <button class="roomHistory">Room #1</button>
+        </div>
+        <div class="chatroom">
+            <div class="chat" id="chat"> <!-- Chat history will appear here --> </div>
+            <div class="prompt">
+                <form id="prompt" class="prompt">
+                    <textarea id="userPrompt" class="userPrompt" required></textarea>
+                    <button class="sendButton" type="submit" id="submitPrompt">
+                        <img src="assets/send.png" alt="send">
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>
