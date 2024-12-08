@@ -1,0 +1,126 @@
+body {
+    background-color: rgb(37, 37, 37);
+    border: 0px;
+    padding: 0px;
+    margin: 0px;
+    overflow: hidden;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+.navbar {
+    display: flex;
+    background-color: rgb(29, 29, 29);
+    align-items: center;
+    justify-content: center;
+    height: 60px;
+}
+
+.flexbox {
+    display: flex;
+}
+
+.sidebar {
+    border: 0px;
+    padding: 0px;
+    width: 350px;
+    height: 800px;
+    background-color: black;
+    border-color: white;
+}
+
+.chatroom {
+    width: 100%;
+}
+
+.chat {
+    height: 700px; /* Retaining your defined height */
+    overflow-y: auto; /* Ensures scrollable chat history */
+    background-color: #000000; /* Light background for better contrast */
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adds subtle depth */
+}
+
+.newRoom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 75px;
+}
+
+.newRoomButton {
+    width: 200px;
+    height: 40px;
+}
+
+.roomHistory {
+    display: flex;
+    align-items: center;
+    margin: 15px;
+    background-color: gray;
+    color: white;
+    border-radius: 8px;
+    height: 50px;
+    width: 250px;
+}
+
+.prompt {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Ensures alignment between input and button */
+}
+
+.userPrompt {
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    width: 1000px;
+    min-height: 50px;
+    max-height: 200px; 
+    resize: vertical; 
+    text-align: left; 
+    padding: 10px; 
+    overflow: auto;
+}
+
+.sendButton {
+    width: 50px;
+    height: 50px;
+    background-color: gray;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sendButton img {
+    width: 100%;
+    height: 100%;
+}
+
+.message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 8px;
+    line-height: 1.5;
+    font-family: Arial, sans-serif;
+}
+
+.user-message {
+    background-color: #d1e7dd; /* Light green for user messages */
+    text-align: right;
+}
+
+.bot-message {
+    background-color: #f8d7da; /* Light red for bot responses */
+    text-align: left;
+}
+
+.error-message {
+    background-color: #f8d7da; /* Same styling as bot for errors */
+    text-align: left;
+    font-style: italic;
+}
