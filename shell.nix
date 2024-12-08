@@ -17,6 +17,7 @@ in pkgs.mkShell {
         "google.ai.generativelanguage"
         tensorflow
         pip
+        scikit-learn
       ]))
   ];
 
