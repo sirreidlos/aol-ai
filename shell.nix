@@ -18,6 +18,8 @@ in pkgs.mkShell {
         tensorflow
         pip
         scikit-learn
+        numpy
+        keras
       ]))
   ];
 
