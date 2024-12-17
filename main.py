@@ -109,12 +109,16 @@ def prompt():
     res = [[0] for _ in range(len(prediction[0]))]
     # print(len(prediction[0]))
     for idx, p in enumerate(prediction[0]):
-        res[idx] = (p, label_encoder.inverse_transform([idx])[0]) 
+        res[idx] = [p*100, label_encoder.inverse_transform([idx])[0]] 
 
     res.sort(reverse=True)
-    
-    return jsonify(str(res))
 
+    for idx, arr in enumerate(res):
+        res[idx] = [f"{arr[0]}%", arr[1]]
+    
+    return jsonify(res)
+
+#   i have sore throat, diarrhea, vomit, fever
 @app.route("/api/history", methods=["GET"])
 def get_history():
     user_id = request.cookies.get("user_id")

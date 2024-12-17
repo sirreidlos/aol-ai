@@ -44,11 +44,32 @@ form.addEventListener('submit', async function (event) {
             throw new Error(`Error: ${response.status}`);
         }
 
-        const reply = await response.text();
+        let reply = await response.text();
+        // reply = reply.replaceAll("'", '"');
+        // reply = reply.replaceAll("\\", '');
+        console.log(reply);
+        
+        const arr = JSON.parse(reply);
+        
+        // for (let index = 0; index < arr.length; index++) {
+        //     console.log(index);
+        //     console.log(arr[index]);
+        // }
+        // console.log(JSON.parse(arr));
+
+        let ret = "";
+        for(let i = 0; i < 10; i++){
+            ret += String(i + 1);
+            ret += ". ";
+            ret += arr[i][1];
+            ret += " (";
+            ret += arr[i][0];
+            ret += ") <br>";
+        }
 
         // Display Gemini's response
         const botMessage = document.createElement('div');
-        botMessage.textContent = `Gemini: ${reply}`;
+        botMessage.innerHTML = `${ret}`;
         botMessage.classList.add('message', 'bot-message');
         chatDiv.appendChild(botMessage);
 
