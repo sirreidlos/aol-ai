@@ -17,13 +17,13 @@
             <div class="newRoom">
                 <button class="newRoomButton" id="newRoomButton">New Diagnosis</button>
             </div>
-            <button class="roomHistory">Room #1</button>
+            <button data-room_id="" class="roomHistory">Room #1</button>
         </div>
         <div class="chatroom">
             <div class="chat" id="chat"> <!-- Chat history will appear here --> </div>
             <div class="prompt">
                 <form id="prompt" class="prompt">
-                    <textarea id="userPrompt" class="userPrompt" required></textarea>
+                    <textarea id="userPrompt" class="userPrompt" required placeholder="Enter your symptoms here..."></textarea>
                     <button class="sendButton" type="submit" id="submitPrompt">
                         <img src="assets/send.png" alt="send">
                     </button>

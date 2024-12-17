@@ -10,9 +10,40 @@ async function loadChatHistory() {
         const history = await response.json();
 
         chatDiv.innerHTML = ''; // Clear the chat area
-        history.forEach(([message, role]) => {
+        history.forEach(([role, message]) => {
             const chatMessage = document.createElement('div');
-            chatMessage.textContent = `${role === 'user' ? 'You' : 'Gemini'}: ${message}`;
+            let msg = "";
+            if(role != 'user'){
+                let arr = message.diseases;
+                let symptoms_list = message.symptoms;
+
+                
+                
+                let ret = "The symptoms you listed: <br>";
+                for(let i = 0; i < symptoms_list.length; i++){
+                    ret += "- ";
+                    ret += symptoms_list[i];
+                    ret += "<br>";
+                }
+        
+                ret += "<br>";
+                ret += "Here is a list of possible diagnoses for diseases you might have: <br>";
+                for(let i = 0; i < 10; i++){
+                    if(arr[i][0].startsWith("0.000")) break;
+                    if(arr[i][0].length > 7) arr[i][0] = arr[i][0].substring(0, 7);
+                    ret += String(i + 1);
+                    ret += ". ";
+                    ret += arr[i][1];
+                    ret += " (";
+                    ret += arr[i][0];
+                    ret += "%) <br>";
+                }
+
+                msg = ret;
+            } else {
+                msg = message;
+            }
+            chatMessage.innerHTML = `${role === 'user' ? 'You: ' : ''}${msg}`;
             chatMessage.classList.add('message', role === 'user' ? 'user-message' : 'bot-message');
             chatDiv.appendChild(chatMessage);
         });
@@ -45,26 +76,31 @@ form.addEventListener('submit', async function (event) {
         }
 
         let reply = await response.text();
-        // reply = reply.replaceAll("'", '"');
-        // reply = reply.replaceAll("\\", '');
-        console.log(reply);
-        
-        const arr = JSON.parse(reply);
-        
-        // for (let index = 0; index < arr.length; index++) {
-        //     console.log(index);
-        //     console.log(arr[index]);
-        // }
-        // console.log(JSON.parse(arr));
+        // console.log(reply);
 
-        let ret = "";
+        const res = JSON.parse(reply);
+        // console.log(arr);
+        const arr = res.diseases;
+        const symptoms_list = res.symptoms;
+        
+        let ret = "The symptoms you listed: <br>";
+        for(let i = 0; i < symptoms_list.length; i++){
+            ret += "- ";
+            ret += symptoms_list[i];
+            ret += "<br>";
+        }
+
+        ret += "<br>";
+        ret += "Here is a list of possible diagnoses for diseases you might have: <br>";
         for(let i = 0; i < 10; i++){
+            if(arr[i][0].startsWith("0.000")) break;
+            if(arr[i][0].length > 7) arr[i][0] = arr[i][0].substring(0, 7);
             ret += String(i + 1);
             ret += ". ";
             ret += arr[i][1];
             ret += " (";
             ret += arr[i][0];
-            ret += ") <br>";
+            ret += "%) <br>";
         }
 
         // Display Gemini's response

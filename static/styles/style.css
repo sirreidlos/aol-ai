@@ -1,9 +1,13 @@
+::-webkit-scrollbar{
+    display: none;
+}
 body {
     background-color: rgb(37, 37, 37);
     border: 0px;
     padding: 0px;
     margin: 0px;
     overflow: hidden;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
@@ -76,9 +80,10 @@ h1 {
 }
 
 .userPrompt {
-    background-color: rgb(255, 255, 255);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(199, 199, 199);
     margin: 10px;
-    width: 1000px;
+    width: 1050px;
     min-height: 50px;
     max-height: 200px; 
     resize: vertical; 
@@ -110,12 +115,12 @@ h1 {
 }
 
 .user-message {
-    background-color: #d1e7dd; /* Light green for user messages */
+    background-color: #efdbc2; /* Light green for user messages */
     text-align: right;
 }
 
 .bot-message {
-    background-color: #f8d7da; /* Light red for bot responses */
+    background-color: #6fa6e9; /* Light red for bot responses */
     text-align: left;
 }
 
